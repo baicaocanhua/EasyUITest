@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="jquery.min.js"></script>
+    <title></title>
+    <script type="text/javascript">
+        var data = [{ "Id": "1", "Name": "文学", "pId": "0", "KeyWords": "文学", "Content": "", "CreateTime": "", "UpdateTime": "" }];
+        var obj = "{\"name\":\"zs\",\"age\":\"25\",\"sex\":\"男\"}";
+        $(function () {
+            //obj = eval("(" + obj + ")");
+            //alert(obj.name);
+            //var aa = $.parseJSON(obj);
+            //alert(aa.name);
+            $("#btn").click(function () {
+                var user = document.getElementById("ll");
+                //方法1
+                alert(user.dataset["name"] + "方法1");
+                user.dataset["name"] = "ls";
+                alert(user.dataset["name"] + "方法1赋值");
+                //方法2
+                var userName = user.getAttribute('data-name');
+                alert(userName + "方法2");
+                // 使用setAttribute设置 data- 属性
+                user.setAttribute('data-name', 'zs');
+                userName = user.getAttribute('data-name');
+                alert(userName + "方法2赋值");
+                //方法3
+                alert($("#ll").data("city"));
+                alert($("#ll").data("options").name);
+            })
+        })
+
+    </script>
+</head>
+<body>
+    <ul>
+        <li id="ll" class="user" data-name="maimai" data-city="ShangHai"
+            data-lang="CSharp" data-food="apple" data-options='{"name":"John"}'></li>
+    </ul>
+    <input type="button" value="get" id="btn" />
+</body>
+</html>
